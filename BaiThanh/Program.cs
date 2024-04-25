@@ -1,7 +1,20 @@
+using BaiThanh.Model;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddDbContext<BaoCaoContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Thanh"));
+});
+builder.Services.AddCors(option => option.AddPolicy("FruitStorePolicy", policy =>
+{
+    policy
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader() ;
+}));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

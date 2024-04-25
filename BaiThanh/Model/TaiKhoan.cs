@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BaiThanh.Model
 {
-    public class DanhMucSanPham
+    public class TaiKhoan
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public string Loai { get; set; }
-       
-
+        public int id { get; set; }
+        public string TaiKhan { get; set; }
+        public string Password { get; set; }
+        public int role { get; set; }
     }
 }
